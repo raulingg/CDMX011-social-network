@@ -1,15 +1,33 @@
 import { Home } from '../components/home.js';
+import { Login } from '../components/login.js';
 
-const app = document.getElementById('app');
+const rootDiv = document.getElementById('root');
 
-export const router = (route) => {
-  app.innerHTML = '';
-  switch (route) {
-    case '': {
-      return app.appendChild(Home());
-    }
+export const routes = {
+  '/': Home,
+  '/login': Login,
+};
 
-    default:
-      return console.log('404');
+/* const component = routes[window.location.pathname];
+rootDiv.appendChild(component()); */
+
+export const onNavigate = (pathname) => {
+  window.history.pushState(
+    {},
+    pathname,
+    window.location.origin + pathname,
+  );
+  while (rootDiv.firstChild) {
+    rootDiv.removeChild(rootDiv.firstChild);
   }
+  rootDiv.appendChild(routes[pathname]());
+  const viewFunction = routes[pathname];
+  viewFunction(rootDiv);
+};
+
+window.onpopstate = () => {
+  while (rootDiv.firstChild) {
+    rootDiv.removeChild(rootDiv.firstChild);
+  }
+  rootDiv.appendChild(component());
 };

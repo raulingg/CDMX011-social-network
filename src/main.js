@@ -1,12 +1,10 @@
-// Este es el punto de entrada de tu aplicacion
+import { onNavigate, routes } from './router/routes.js';
 
-/* import { myFunction } from './lib/index.js';
+const rootDiv = document.getElementById('root');
+const homeViewFunction = routes[window.location.pathname];
+homeViewFunction(rootDiv);
 
-myFunction(); */
-
-import { router } from './router/routes.js';
-
-router(window.location.hash);
-window.addEventListener('hashchange', () => {
-  router(window.location.hash);
+/* toHome.addEventListener('click', () => {
+  onNavigate('/');
 });
+ */
