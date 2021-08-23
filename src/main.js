@@ -1,10 +1,9 @@
-import { onNavigate, routes } from './router/routes.js';
+import { onNavigate, routes, load } from './router/routes.js';
+import * as firebase from './lib/firebase.js';
 
-const rootDiv = document.getElementById('root');
+/* const rootDiv = document.getElementById('root');
+
+load(firebase);
+
 const homeViewFunction = routes[window.location.pathname];
-homeViewFunction(rootDiv);
-
-/* toHome.addEventListener('click', () => {
-  onNavigate('/');
-});
- */
+homeViewFunction(firebase); */

@@ -15,5 +15,22 @@ body {
     background-size: cover;
     margin: 0;
     padding: 0;
+    justify-content: center;
+    font-family: 'Gill Sans', sans-serif;
+    text-align: center;
 
+}
+#register {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#register form {
+    display: flex;
+    width: 50%;
+    height: 100px;
+    flex-direction: column;
+    justify-content: space-between;
 }

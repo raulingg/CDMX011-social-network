@@ -8,14 +8,32 @@
   <title>Échale la culpa</title>
 </head>
 <body>
-  <!-- <nav>
-    <ul>
-      <li><a id="toHome">Home</a></li>
-      <li><a id="">Registrarse</a></li>
-      <li><a id="toLogin">LogIn</a></li>
-    </ul>
-  </nav> -->
   <div id="root"></div>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDhl8UbwLZqgbT0ZkSZnECYAijJ6cq-3Yw",
+    authDomain: "echale-la-culpa.firebaseapp.com",
+    projectId: "echale-la-culpa",
+    storageBucket: "echale-la-culpa.appspot.com",
+    messagingSenderId: "935955315781",
+    appId: "1:935955315781:web:d3f1c617ea7b2e7dec372c"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
   <script type="module" src="main.js"></script>
+  <script type="module" src="./lib/firebase.js"></script>
+
 </body>
 </html>
