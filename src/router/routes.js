@@ -5,11 +5,11 @@ import { Register } from '../components/register.js';
 
 const rootDiv = document.getElementById('root');
 
-let firebase = null;
+/* let firebase = null;
 
 export const load = (firebaseFromMain) => {
   firebase = firebaseFromMain;
-};
+}; */
 
 export const routes = {
   '/': Home,

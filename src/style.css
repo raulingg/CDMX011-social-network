@@ -20,14 +20,14 @@ body {
     text-align: center;
 
 }
-#register {
+#divRegister {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#register form {
+#divRegister form {
     display: flex;
     width: 50%;
     height: 100px;

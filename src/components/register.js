@@ -1,7 +1,8 @@
-import { createUsser } from "../lib/firebase.js";
+import { createUsser } from '../lib/firebase.js';
+
 export const Register = () => {
   const divRegister = document.createElement('div');
-  divRegister.setAttribute('id', 'register');
+  divRegister.setAttribute('id', 'divRegister');
 
   const form = document.createElement('form');
 
