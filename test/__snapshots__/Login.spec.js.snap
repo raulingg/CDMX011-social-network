@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login renderiza 1`] = `
+"<div>
+    <form id=\\"signInForm\\">
+        <label for=\\"email\\">E-mail</label>
+        <input id=\\"email\\" type=\\"email\\">
+        <label for=\\"password\\">Password</label>
+        <input id=\\"password\\" type=\\"password\\">
+        <input id=\\"signInBtn\\" type=\\"submit\\" value=\\"Sign In\\">
+        <p id=\\"errorMessage\\"></p>
+    </form>
+    </div>"
+`;
