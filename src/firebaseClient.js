@@ -1,7 +1,3 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-
 const firebaseConfig = {
   apiKey: 'AIzaSyAxKjqTudxBWi9j9i4IDKn450hmM1m_w3A',
   authDomain: 'red-social-coaches.firebaseapp.com',
