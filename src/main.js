@@ -1,5 +1,25 @@
-// Este es el punto de entrada de tu aplicacion
+import { Home } from './views/Home.js';
+import { Login } from './views/Login.js';
+import { render } from './utils.js';
 
-import { myFunction } from './lib/index.js';
+const routes = {
+  '/': Home,
+  '/login': Login,
+};
 
-myFunction();
+const dispatchRoute = (pathname = '/') => {
+  const root = document.getElementById('root');
+  const component = routes[pathname];
+  render(root, component());
+};
+
+document.addEventListener('load', dispatchRoute);
+
+export const onNavigate = (pathname) => {
+  window.history.pushState({}, pathname, window.location.origin + pathname);
+  dispatchRoute(pathname);
+};
+
+window.addEventListener('popstate', () => {
+  dispatchRoute(window.location.pathname);
+});
