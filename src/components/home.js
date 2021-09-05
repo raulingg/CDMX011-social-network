@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { onNavigate } from '../../src/main.js';
+import { onNavigate } from '../router/routes.js';
 
 export const Home = () => {
   const html = `

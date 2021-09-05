@@ -1,4 +1,4 @@
-import { createUsser } from '../lib/firebase.js';
+import { createUsser, continueWithGoogle } from '../lib/firebase.js';
 
 export const Register = () => {
   const divRegister = document.createElement('div');
@@ -13,13 +13,17 @@ export const Register = () => {
   const inputPassword = document.createElement('input');
   inputPassword.setAttribute('placeholder', 'Ingresa tu Contraseña');
   inputPassword.setAttribute('type', 'password');
+  inputPassword.setAttribute('minlength', '5');
 
   const buttonRegister = document.createElement('button');
   buttonRegister.textContent = 'Registrarme';
+  const buttonGoogle = document.createElement('button');
+  buttonGoogle.textContent = 'Continuar con Google';
 
   form.appendChild(inputEmail);
   form.appendChild(inputPassword);
   form.appendChild(buttonRegister);
+  form.appendChild(buttonGoogle);
 
   divRegister.appendChild(form);
 
@@ -30,5 +34,9 @@ export const Register = () => {
     await createUsser(usserEmail, usserPassword);
   });
 
+  buttonGoogle.addEventListener('click', async (e) => {
+    e.preventDefault();
+    await continueWithGoogle();
+  });
   return divRegister;
 };

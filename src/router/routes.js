@@ -2,24 +2,26 @@
 import { Home } from '../components/home.js';
 import { Login } from '../components/login.js';
 import { Register } from '../components/register.js';
+import { viewTimeLine } from '../components/timeline.js';
+import { createPost } from '../components/createPost.js';
 
 const rootDiv = document.getElementById('root');
-
-/* let firebase = null;
-
-export const load = (firebaseFromMain) => {
-  firebase = firebaseFromMain;
-}; */
 
 export const routes = {
   '/': Home,
   '/login': Login,
   '/register': Register,
+  '/timeline': viewTimeLine,
+  '/create-post': createPost,
 };
 
 const component = routes[window.location.pathname];
 rootDiv.appendChild(component());
 
+/* window.onload = () => {
+  rootDiv.appendChild(component());
+};
+ */
 export const onNavigate = (pathname) => {
   window.history.pushState(
     {},
@@ -36,5 +38,5 @@ window.onpopstate = () => {
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
   }
-  rootDiv.appendChild(component());
+  rootDiv.appendChild(routes[window.location.pathname]());
 };

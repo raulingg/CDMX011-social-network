@@ -5,8 +5,10 @@
 import { Home } from '../src/components/home';
 
 describe('Pruebas del home', () => {
-  it('test de botón registrarse', async () => {
-    const chanceRoute = await Home();
-    console.log(chanceRoute);
+  const renderHome = Home();
+
+  it('test para verificar que exista el botón de registro', () => {
+    const buttonRegister = renderHome.querySelector('#register');
+    expect(buttonRegister.outerHTML).toBe('<button id="register">Regístrate</button>');
   });
 });
