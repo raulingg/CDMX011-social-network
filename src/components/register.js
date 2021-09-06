@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { createUsser, continueWithGoogle } from '../lib/firebase.js';
 
 export const Register = () => {

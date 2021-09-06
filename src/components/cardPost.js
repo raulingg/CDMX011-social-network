@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable import/no-cycle */
 import { observer, updateLike, updateUnLike } from '../lib/firebase.js';
 
@@ -14,17 +15,29 @@ export const cardTemplete = (post) => {
     `;
   const divElement = document.createElement('div');
   divElement.setAttribute('class', 'card');
+  divElement.setAttribute('id', `${post.id}`);
   divElement.innerHTML = html;
 
   const likes = post.likes;
   const postId = post.id;
-  const likePost = divElement.querySelector('#likePost');
-  likePost.addEventListener('click', async () => {
+
+  const likePost = divElement.querySelector('.fa-heart');
+
+  const getLike = async () => {
     const uid = await observer();
+    return uid;
+  };
+
+  likePost.addEventListener('click', async () => {
+    const uid = await getLike();
     if (likes.includes(uid)) {
-      await updateUnLike(postId, uid);
+      updateUnLike(postId, uid);
+      console.log('si');
+      // location.reload();
     } else {
-      await updateLike(postId, uid);
+      updateLike(postId, uid);
+      console.log('no');
+      // location.reload();
     }
   });
 

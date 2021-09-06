@@ -2,7 +2,7 @@
 import { getAllPost } from '../lib/firebase.js';
 import { onNavigate } from '../router/routes.js';
 import { cardTemplete } from './cardPost.js';
-
+// import { updateCard } from './updateCard.js';
 export const viewTimeLine = () => {
   const html = `
     <div class="container timeline">
@@ -29,12 +29,39 @@ export const viewTimeLine = () => {
   });
 
   const cardsContainer = divElement.querySelector('.timeline');
+
   const getPost = async () => {
-    const allpost = await getAllPost();
+    await getAllPost((snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === 'added') {
+          const post = change.doc.data();
+          post.id = change.doc.id;
+          const card = cardTemplete(post);
+          cardsContainer.appendChild(card);
+        }
+        if (change.type === 'modified') {
+          const post = change.doc.data();
+          post.id = change.doc.id;
+          const cardId = `${change.doc.id}`;
+          const card = cardsContainer.querySelector(`[id="${cardId}"]`);
+          console.log('algo se cambio');
+          const song = card.querySelector('.song-sentence');
+          const likes = card.querySelector('.fa-heart');
+          song.innerHTML = post.song;
+          likes.innerHTML = post.likes.length;
+          // card.innerHTML = updateCard(post);
+          // console.log('Modified city: ', change.doc.data());
+        }
+        if (change.type === 'removed') {
+          // console.log('Removed city: ', change.doc.data());
+        }
+      });
+    });
+    /* const allpost = await getAllPost();
     allpost.forEach((post) => {
       const card = cardTemplete(post);
       cardsContainer.appendChild(card);
-    });
+    }); */
   };
   getPost();
 

@@ -31,8 +31,12 @@ export const login = (email, password) => {
       const errorMessage = error.message;
     });
 };
-
 export const observer = async () => {
+  const user = await firebase.auth().currentUser;
+  const userUid = user.uid;
+  return userUid;
+};
+/* export const observer = async () => {
   let uid = '';
   await firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -47,7 +51,7 @@ export const observer = async () => {
     }
   });
   return uid;
-};
+}; */
 
 export const createUsser = (email, password) => {
   firebase
@@ -82,23 +86,13 @@ export const publishPost = (singer, song) => {
     });
 };
 
-export const getAllPost = async () => {
-  let allPosts = [];
-  await db.collection('post').onSnapshot((snapshot) => {
-    const posts = [];
-    snapshot.forEach((doc) => {
-      const post = doc.data();
-      post.id = doc.id;
-      posts.push(post);
-      console.log(posts);
-    });
-    /* querySnapshot.docs.forEach((doc) => {
+export const getAllPost = (callback) => {
+  db.collection('post').onSnapshot(callback);
+  /* querySnapshot.docs.forEach((doc) => {
       const post = doc.data();
       post.id = doc.id;
       posts.push(post);
     }); */
-  });
-  return allPosts;
 };
 
 export const continueWithGoogle = () => {
@@ -132,3 +126,11 @@ export const updateLike = (id, uid) => db.collection('post').doc(id).update({
 export const updateUnLike = (id, uid) => db.collection('post').doc(id).update({
   likes: firebase.firestore.FieldValue.arrayRemove(uid),
 });
+
+export const signOut = () => {
+  firebase.auth().signOut().then(() => {
+    console.log('Saliendo');
+  }).catch((error) => {
+    // An error happened.
+  });
+};
