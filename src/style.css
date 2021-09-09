@@ -167,25 +167,43 @@ label {
      margin-bottom: 30px;
      text-transform: uppercase;
      position: relative;
+     padding: 0px 20px 30px 20px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
  }
  .header-card{
      position: absolute;
      background-color: #FAA138;
      padding: 5px 20px;
      width: auto;
+     min-width: 50%;
      display: block;
      float: left;
      border-radius: 20px;
      left: 50%;
      transform: translateX(-50%);
      margin-top: -15px;
+     margin-bottom: 30px;
  }
  .singer-name{
-     margin-top: 30px;
+     margin-top: 50px;
  }
  .song-sentence{
     font-family: 'Bebas Neue', cursive;
     -webkit-text-stroke: .25px rgb(226, 224, 224);
     color: rgba(0, 0, 0, .5); 
     font-size: 4rem;
+ }
+ .options-post{
+     margin-top: 20px;
+     width: 50%;
+     display: flex;
+     justify-content: space-between;
+ }
+ .card i{
+     cursor: pointer;
+ }
+ .card i:hover{
+     color: #FAA138;
  }

@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { onNavigate } from '../router/routes.js';
+// import { onNavigate } from '../router/routes.js';
 
 /* eslint-disable no-unused-vars */
 const firebaseConfig = {
@@ -14,10 +14,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// google
 const provider = new firebase.auth.GoogleAuthProvider();
 
-export const login = (email, password) => {
+export const login = (email, password, onNavigate) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
     // Signed in
@@ -36,23 +35,6 @@ export const observer = async () => {
   const userUid = user.uid;
   return userUid;
 };
-/* export const observer = async () => {
-  let uid = '';
-  await firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      uid = user.uid;
-      // ...
-    } else {
-      // onNavigate('/');
-      // User is signed out
-      // ...
-    }
-  });
-  return uid;
-}; */
-
 export const createUsser = (email, password) => {
   firebase
     .auth()
@@ -76,7 +58,7 @@ export const publishPost = (singer, song) => {
   db.collection('post').doc().set({
     singer,
     song,
-    likes: 0,
+    likes: [],
   })
     .then(() => {
       console.log('post creado');
@@ -85,6 +67,7 @@ export const publishPost = (singer, song) => {
       console.error('Buu no se creó el post', error);
     });
 };
+export const deletePost = (id) => db.collection('post').doc(id).delete();
 
 export const getAllPost = (callback) => {
   db.collection('post').onSnapshot(callback);
@@ -95,7 +78,7 @@ export const getAllPost = (callback) => {
     }); */
 };
 
-export const continueWithGoogle = () => {
+export const continueWithGoogle = (onNavigate) => {
   firebase.auth()
     .signInWithPopup(provider)
     .then((result) => {
@@ -127,9 +110,9 @@ export const updateUnLike = (id, uid) => db.collection('post').doc(id).update({
   likes: firebase.firestore.FieldValue.arrayRemove(uid),
 });
 
-export const signOut = () => {
+export const signOut = (onNavigate) => {
   firebase.auth().signOut().then(() => {
-    console.log('Saliendo');
+    onNavigate('/');
   }).catch((error) => {
     // An error happened.
   });

@@ -1,6 +1,8 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable import/no-cycle */
-import { observer, updateLike, updateUnLike } from '../lib/firebase.js';
+import {
+  observer, updateLike, updateUnLike, deletePost,
+} from '../lib/firebase.js';
 
 export const cardTemplete = (post) => {
   const html = `
@@ -10,7 +12,7 @@ export const cardTemplete = (post) => {
         <i class="fas fa-heart" id="likePost">${post.likes.length}</i>
         <div class="options-post">
             <i class="fas fa-pencil-alt"></i>
-            <i class="fas fa-trash-alt"></i>
+            <i class="fas fa-trash-alt" data-id="${post.id}"></i>
         </div>
     `;
   const divElement = document.createElement('div');
@@ -23,6 +25,16 @@ export const cardTemplete = (post) => {
 
   const likePost = divElement.querySelector('.fa-heart');
 
+  const toDeletePost = divElement.querySelector('.fa-trash-alt');
+
+  toDeletePost.addEventListener('click', (e) => {
+    const idPost = e.target.dataset.id;
+    const toConfirm = confirm('¿Seguro que quieres borrar tu post?');
+    if (toConfirm) {
+      deletePost(idPost);
+    }
+  });
+
   const getLike = async () => {
     const uid = await observer();
     return uid;
@@ -32,12 +44,8 @@ export const cardTemplete = (post) => {
     const uid = await getLike();
     if (likes.includes(uid)) {
       updateUnLike(postId, uid);
-      console.log('si');
-      // location.reload();
     } else {
       updateLike(postId, uid);
-      console.log('no');
-      // location.reload();
     }
   });
 

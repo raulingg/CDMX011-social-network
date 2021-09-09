@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { createUsser, continueWithGoogle } from '../lib/firebase.js';
+import { onNavigate } from '../router/routes.js';
 
 export const Register = () => {
   const divRegister = document.createElement('div');
@@ -37,7 +38,7 @@ export const Register = () => {
 
   buttonGoogle.addEventListener('click', async (e) => {
     e.preventDefault();
-    await continueWithGoogle();
+    await continueWithGoogle(onNavigate);
   });
   return divRegister;
 };

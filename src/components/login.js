@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { login, continueWithGoogle } from '../lib/firebase.js';
+import { onNavigate } from '../router/routes.js';
 
 export const Login = () => {
   const divLogin = document.createElement('div');
@@ -33,11 +34,11 @@ export const Login = () => {
     e.preventDefault();
     const usserEmail = inputEmail.value;
     const usserPassword = inputPassword.value;
-    await login(usserEmail, usserPassword);
+    await login(usserEmail, usserPassword, onNavigate);
   });
   buttonGoogle.addEventListener('click', async (e) => {
     e.preventDefault();
-    await continueWithGoogle();
+    await continueWithGoogle(onNavigate);
   });
   return divLogin;
 };
