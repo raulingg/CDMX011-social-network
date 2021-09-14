@@ -1,0 +1,209 @@
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+#root{
+    margin: 0;
+    padding: 0;
+}
+/* Estilos home */
+#homeContainer{
+    color: #fff;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: url('./images/cover-home.jpg') no-repeat center;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    font-family: 'Gill Sans', sans-serif;
+    text-align: center;
+
+}
+#divRegister {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('./images/cover-signup.jpg') no-repeat center;
+    background-size: cover;
+}
+#divRegister form {
+    display: flex;
+    width: 50%;
+    height: 100px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#divLogin {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('./images/cover-login.jpg') no-repeat center;
+    background-size: cover;
+
+}
+#divLogin form {
+    display: flex;
+    width: 50%;
+    height: 100px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+input:invalid {
+    border: 2px solid red;
+}
+/* Time line */
+.container {
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
+    color: white;
+}
+
+#menu {
+    position: fixed;
+    bottom: 0;
+    background-color: #18BCB7;
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+#menu button{
+    height: 100%;
+    width: 33.33%;
+    margin: 0;
+    background-color: #18BCB7;
+    border: none;
+    border-right: 1px solid white;
+    transition: all .5s;
+}
+#menu button:hover{
+background-color:#118d89 ;
+} 
+#menu button:hover i{
+transform: rotate(10deg);
+} 
+#menu button i{
+    font-size: 1.5rem;
+    color: white;
+}
+.create-post{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+#postForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: auto;
+    text-align: left;
+}
+label {
+    margin-bottom: 10px;
+}
+#singer{
+    margin-bottom: 30px;
+}
+#song{
+    margin-bottom: 30px;
+}
+#publish{
+    background-color: #FAA138;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    transition: all .5s;
+    letter-spacing: 0;
+}
+#publish:hover{
+    background-color: #c97b22;
+    letter-spacing: 2px;
+}
+
+/*     font-family: 'Bebas Neue', cursive;
+ */
+
+ /* Cards */
+ .timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+}
+#timeLineContainer{
+    position: relative;
+    background: url('./images/cover-timeline.jpg') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+#timeLineContainer::before{
+    content: '';
+    background-color: black;
+    opacity: .8;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+ #timeLineContainer h1,h2,h3{
+     padding: 0;
+     margin: 0;
+ }
+ .card{
+     width: 50%;
+     text-align: center;
+     border: 1px solid #fff;
+     margin-bottom: 30px;
+     text-transform: uppercase;
+     position: relative;
+     padding: 0px 20px 30px 20px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+ .header-card{
+     position: absolute;
+     background-color: #FAA138;
+     padding: 5px 20px;
+     width: auto;
+     min-width: 50%;
+     display: block;
+     float: left;
+     border-radius: 20px;
+     left: 50%;
+     transform: translateX(-50%);
+     margin-top: -15px;
+     margin-bottom: 30px;
+ }
+ .singer-name{
+     margin-top: 50px;
+ }
+ .song-sentence{
+    font-family: 'Bebas Neue', cursive;
+    -webkit-text-stroke: .25px rgb(226, 224, 224);
+    color: rgba(0, 0, 0, .5); 
+    font-size: 4rem;
+ }
+ .options-post{
+     margin-top: 20px;
+     width: 50%;
+     display: flex;
+     justify-content: space-between;
+ }
+ .card i{
+     cursor: pointer;
+ }
+ .card i:hover{
+     color: #FAA138;
+ }
